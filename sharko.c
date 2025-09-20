@@ -6,8 +6,9 @@
 static int32_t masterfd;
 int main() {
 
+    // forkpty creates master child relationship
     if (forkpty(&masterfd, NULL, NULL, NULL) == 0) {
-	execlp("/usr/bin/bash", "bash", NULL);
+	execlp("/usr/bin/bash", "bash", NULL); // creates child bash process
 	perror("execlp");
 	exit(1);
     }
